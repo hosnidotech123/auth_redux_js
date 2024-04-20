@@ -1,13 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../features/userSlice'
 
 function Header() {
 
-    const user=useSelector((state)=>state.user.user)
+    let user=useSelector((state)=>state.user.user)
 
     const dispatch=useDispatch()
+
+    const navigate=useNavigate()
+
+
+    useEffect(()=>{
+        console.log(user)
+    },[])
 
     const handleLogout=(e)=>{
         e.preventDefault()
@@ -54,7 +61,7 @@ function Header() {
                                     </li>
 
                                     <li>
-                                        <Link className="text-gray-500 transition hover:text-gray-500/75" to="/about"> About </Link>
+                                        <Link className="text-gray-500 transition hover:text-gray-500/75" to="/service"> Service </Link>
                                     </li>
 
 
@@ -79,7 +86,7 @@ function Header() {
                                     className={`rounded-md  ${user.username==="admin"?"":"hidden"} bg-teal-600 ml-2 px-5 py-2.5 text-sm font-medium text-white shadow`}
                                     
                                 >
-                                    LogOut
+                                    Log out
                                 </Link>
 
                                 <div className="hidden sm:flex">

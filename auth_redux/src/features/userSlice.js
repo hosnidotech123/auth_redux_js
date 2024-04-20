@@ -26,7 +26,7 @@ const userSlice=createSlice({
     name:"user",
     initialState:{
         loading:false,
-        user:localStorage.getItem?JSON.parse(localStorage.getItem("user")):{username:"",password:""},
+        user:localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")):{username:"",password:""},
         error:null
     },
     extraReducers:(builder)=>{
